@@ -1,54 +1,231 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+"use client";
+import { Mail, MapPin, Phone, MessageCircle, Clock, Send } from "lucide-react";
+import { useState } from "react";
 
 export default function ContactoSection() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <section
       id="contacto"
-      className="min-h-screen bg-gray-100 text-gray-800 p-8 sm:p-20"
+      className="py-24 px-8 bg-gradient-to-b from-gray-50 to-white"
     >
-      <h2 className="text-4xl font-bold mb-6 text-center relative">
-        Contacto
-        <span className="block w-16 h-1 bg-gray-800 mx-auto mt-4"></span>
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
-        <div className="p-8 bg-white shadow-md rounded-xl flex flex-col items-start justify-center gap-2 text-left">
-          <span className="text-3xl text-blue-900 mb-2">
-            <MapPin className="w-8 h-8 text-black" />
-          </span>
-          <p className="font-bold text-lg text-gray-800 mb-1">Dirección:</p>
-          <p className="text-base text-gray-700">Avenida Calle Falsa 2025</p>
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl md:text-6xl font-bold text-[#484060] mb-6">
+            Contacto
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-[#484060] to-[#615A77] mx-auto mb-8"></div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Estamos aquí para ayudarte. Contactanos y descubrí la tranquilidad de estar bien protegido
+          </p>
         </div>
-        <div className="p-8 bg-white shadow-md rounded-xl flex flex-col items-start justify-center gap-2 text-left">
-          <span className="text-3xl text-blue-900 mb-2">
-            <Phone className="w-8 h-8 text-black" />
-          </span>
-          <p className="font-bold text-lg text-gray-800 mb-1">Celular:</p>
-          <p className="text-base text-gray-700">9 7376 5102</p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
+          {/* Contact Information */}
+          <div className="space-y-8">
+            <h3 className="text-3xl font-bold text-[#484060] mb-8">Información de Contacto</h3>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#615A77] to-[#7C778D] rounded-lg mb-4 flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-white" />
+                </div>
+                <h4 className="font-bold text-lg text-[#484060] mb-2">Teléfono</h4>
+                <p className="text-gray-600">+56 9 7376 5102</p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#7C778D] to-[#9D99A8] rounded-lg mb-4 flex items-center justify-center">
+                  <MessageCircle className="w-6 h-6 text-white" />
+                </div>
+                <h4 className="font-bold text-lg text-[#484060] mb-2">WhatsApp</h4>
+                <p className="text-gray-600">+56 9 7376 5102</p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#9D99A8] to-[#CBC9D0] rounded-lg mb-4 flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-white" />
+                </div>
+                <h4 className="font-bold text-lg text-[#484060] mb-2">Email</h4>
+                <p className="text-gray-600">contacto@corredoresnf.cl</p>
+              </div>
+            </div>
+
+            {/* Hours */}
+            <div className="bg-gradient-to-br from-[#484060] to-[#615A77] rounded-2xl p-8 text-white">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                  <Clock className="w-6 h-6" />
+                </div>
+                <h4 className="text-2xl font-bold">Horarios de Atención</h4>
+              </div>
+              <div className="space-y-3 text-lg">
+                <div className="flex justify-between">
+                  <span>Lunes - Viernes:</span>
+                  <span className="font-semibold">9:00 - 18:00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Sábados:</span>
+                  <span className="font-semibold">9:00 - 13:00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Domingos:</span>
+                  <span className="font-semibold">Cerrado</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="bg-white rounded-2xl p-8 shadow-2xl border border-gray-100">
+            <h3 className="text-3xl font-bold text-[#484060] mb-8">Envianos un Mensaje</h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-semibold text-[#484060] mb-2">
+                    Nombre Completo
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#484060] focus:ring-2 focus:ring-[#484060]/20 transition-colors duration-300"
+                    placeholder="Tu nombre"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-[#484060] mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#484060] focus:ring-2 focus:ring-[#484060]/20 transition-colors duration-300"
+                    placeholder="tu@email.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="phone" className="block text-sm font-semibold text-[#484060] mb-2">
+                  Teléfono
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#484060] focus:ring-2 focus:ring-[#484060]/20 transition-colors duration-300"
+                  placeholder="+56 9 1234 5678"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-semibold text-[#484060] mb-2">
+                  Mensaje
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={6}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#484060] focus:ring-2 focus:ring-[#484060]/20 transition-colors duration-300 resize-none"
+                  placeholder="Contanos en qué podemos ayudarte..."
+                  required
+                ></textarea>
+              </div>
+              
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
+                  ✓ ¡Mensaje enviado exitosamente! Te contactaremos pronto.
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
+                  ✗ Error al enviar el mensaje. Por favor, intenta nuevamente.
+                </div>
+              )}
+              
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-[#484060] to-[#615A77] text-white px-8 py-4 rounded-lg font-semibold hover:from-[#615A77] hover:to-[#7C778D] transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 transform shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Enviando...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Enviar Mensaje
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
         </div>
-        <div className="p-8 bg-white shadow-md rounded-xl flex flex-col items-start justify-center gap-2 text-left">
-          <span className="text-3xl text-blue-900 mb-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              x="0px"
-              y="0px"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-            >
-              <path d="M 12.011719 2 C 6.5057187 2 2.0234844 6.478375 2.0214844 11.984375 C 2.0204844 13.744375 2.4814687 15.462563 3.3554688 16.976562 L 2 22 L 7.2324219 20.763672 C 8.6914219 21.559672 10.333859 21.977516 12.005859 21.978516 L 12.009766 21.978516 C 17.514766 21.978516 21.995047 17.499141 21.998047 11.994141 C 22.000047 9.3251406 20.962172 6.8157344 19.076172 4.9277344 C 17.190172 3.0407344 14.683719 2.001 12.011719 2 z M 12.009766 4 C 14.145766 4.001 16.153109 4.8337969 17.662109 6.3417969 C 19.171109 7.8517969 20.000047 9.8581875 19.998047 11.992188 C 19.996047 16.396187 16.413812 19.978516 12.007812 19.978516 C 10.674812 19.977516 9.3544062 19.642812 8.1914062 19.007812 L 7.5175781 18.640625 L 6.7734375 18.816406 L 4.8046875 19.28125 L 5.2851562 17.496094 L 5.5019531 16.695312 L 5.0878906 15.976562 C 4.3898906 14.768562 4.0204844 13.387375 4.0214844 11.984375 C 4.0234844 7.582375 7.6067656 4 12.009766 4 z M 8.4765625 7.375 C 8.3095625 7.375 8.0395469 7.4375 7.8105469 7.6875 C 7.5815469 7.9365 6.9355469 8.5395781 6.9355469 9.7675781 C 6.9355469 10.995578 7.8300781 12.182609 7.9550781 12.349609 C 8.0790781 12.515609 9.68175 15.115234 12.21875 16.115234 C 14.32675 16.946234 14.754891 16.782234 15.212891 16.740234 C 15.670891 16.699234 16.690438 16.137687 16.898438 15.554688 C 17.106437 14.971687 17.106922 14.470187 17.044922 14.367188 C 16.982922 14.263188 16.816406 14.201172 16.566406 14.076172 C 16.317406 13.951172 15.090328 13.348625 14.861328 13.265625 C 14.632328 13.182625 14.464828 13.140625 14.298828 13.390625 C 14.132828 13.640625 13.655766 14.201187 13.509766 14.367188 C 13.363766 14.534188 13.21875 14.556641 12.96875 14.431641 C 12.71875 14.305641 11.914938 14.041406 10.960938 13.191406 C 10.218937 12.530406 9.7182656 11.714844 9.5722656 11.464844 C 9.4272656 11.215844 9.5585938 11.079078 9.6835938 10.955078 C 9.7955938 10.843078 9.9316406 10.663578 10.056641 10.517578 C 10.180641 10.371578 10.223641 10.267562 10.306641 10.101562 C 10.389641 9.9355625 10.347156 9.7890625 10.285156 9.6640625 C 10.223156 9.5390625 9.737625 8.3065 9.515625 7.8125 C 9.328625 7.3975 9.131125 7.3878594 8.953125 7.3808594 C 8.808125 7.3748594 8.6425625 7.375 8.4765625 7.375 z"></path>
-            </svg>
-          </span>
-          <p className="font-bold text-lg text-gray-800 mb-1">WhatsApp</p>
-          <p className="text-base text-gray-700">+569 7376 5102</p>
-        </div>
-        <div className="p-8 bg-white shadow-md rounded-xl flex flex-col items-start justify-center gap-2 text-left">
-          <span className="text-3xl text-blue-900 mb-2">
-            {/* Email Icon */}
-           <Mail className="w-8 h-8 text-black" />
-          </span>
-          <p className="font-bold text-lg text-gray-800 mb-1">Email</p>
-          <p className="text-base text-gray-700">contacto@corredoresnf.cl</p>
-        </div>{" "}
       </div>
     </section>
   );
