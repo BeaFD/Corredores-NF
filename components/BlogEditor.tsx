@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useEditor, EditorContent } from "@tiptap/react";
+import { useEditor, EditorContent, Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import ImageExtension from "@tiptap/extension-image";
 import Underline from "@tiptap/extension-underline";
@@ -42,7 +42,7 @@ const CustomLink = BaseLink.extend({
 });
 
 
-function Toolbar({ editor }: { editor: any }) {
+function Toolbar({ editor }: { editor: Editor | null }) {
   if (!editor) return null;
 
   const addImage = () => {

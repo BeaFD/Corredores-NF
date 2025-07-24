@@ -16,14 +16,13 @@ const alignmentOptions = [
 ];
 
 export default function AlignmentDropdown({ editor }: AlignmentDropdownProps) {
-  if (!editor) return null;
-
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleAlignmentChange = (alignment: string) => {
+    if (!editor) return;
     editor.chain().focus().setTextAlign(alignment).run();
     setIsOpen(false);
   };
@@ -39,6 +38,8 @@ export default function AlignmentDropdown({ editor }: AlignmentDropdownProps) {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  if (!editor) return null;
 
   const getActiveAlignmentIcon = () => {
     const activeOption = alignmentOptions.find(opt => editor.isActive({ textAlign: opt.value }));

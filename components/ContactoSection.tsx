@@ -1,5 +1,5 @@
 "use client";
-import { Mail, MapPin, Phone, MessageCircle, Clock, Send } from "lucide-react";
+import { Mail, Phone, MessageCircle, Clock, Send } from "lucide-react";
 import { useState } from "react";
 
 export default function ContactoSection() {

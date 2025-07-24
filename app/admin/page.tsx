@@ -3,7 +3,14 @@ import { useState } from "react";
 import { ChevronLeft, Menu, FileText, LayoutDashboard, MessageCircle } from "lucide-react";
 import BlogEditor from "../../components/BlogEditor";
 
-const Sidebar = ({ selected, setSelected, collapsed, setCollapsed }: any) => (
+interface SidebarProps {
+  selected: string;
+  setSelected: (value: string) => void;
+  collapsed: boolean;
+  setCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Sidebar = ({ selected, setSelected, collapsed, setCollapsed }: SidebarProps) => (
   <aside
     className={`bg-gradient-to-b from-gray-950 to-gray-800 text-white h-screen py-6 px-2 transition-all duration-300 flex flex-col shadow-xl ${collapsed ? "w-16" : "w-56"} border-r border-gray-800`}
   >

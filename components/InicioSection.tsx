@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight, Shield } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function InicioSection() {
