@@ -9,6 +9,14 @@ export default function InicioSection() {
     setIsVisible(true);
   }, []);
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       id="inicio"
@@ -39,6 +47,7 @@ export default function InicioSection() {
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <a
                 href="#nosotros"
+                onClick={(e) => handleSmoothScroll(e, "nosotros")}
                 className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 flex items-center justify-center gap-2 text-lg hover:scale-105 transform shadow-lg"
               >
                 <ArrowRight size={20} />
@@ -46,6 +55,7 @@ export default function InicioSection() {
               </a>
               <a
                 href="#contacto"
+                onClick={(e) => handleSmoothScroll(e, "contacto")}
                 className=" bg-white border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-all duration-300 flex items-center justify-center gap-2 text-lg hover:scale-105 transform"
               >
                 Contactanos

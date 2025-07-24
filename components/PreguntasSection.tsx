@@ -14,6 +14,14 @@ export default function PreguntasSection() {
     });
   };
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const faqs = [
     {
       question: "¿Qué tipos de seguros ofrecen?",
@@ -108,6 +116,7 @@ export default function PreguntasSection() {
             </p>
             <a
               href="#contacto"
+              onClick={(e) => handleSmoothScroll(e, "contacto")}
               className="bg-white text-[#484060] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 hover:scale-105 transform inline-block text-center"
             >
               Contáctanos
