@@ -55,22 +55,33 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 w-full flex items-center justify-between px-8 py-4 transition-all duration-500 z-50 backdrop-blur-md
         ${scrolled 
-          ? "bg-[#DBEAFE]/95 text-gray-700 shadow-lg border-b border-[#BFDBFE]/50" 
-          : "bg-white/10 text-black border-b border-white/20"
+          ? "bg-gray-900/95 text-gray-100 shadow-lg border-b border-gray-700/50" 
+          : "bg-white/95 text-gray-900 border-b border-gray-200/50"
         }
       `}
     >
       <div className="flex items-center">
         <div className={`flex items-center gap-3 transition-colors duration-300`}>
-          <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm transition-colors duration-300 ${
-            scrolled ? "bg-[#93C5FD] text-[#1E3A8A]" : "bg-white/20 text-black"
-          }`}>
-            CN
-          </div>
+          <img 
+            src="/logo.png" 
+            alt="NF Corredores Logo" 
+            className="w-10 h-10 object-contain"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+              const parent = target.parentElement;
+              if (parent) {
+                const fallback = document.createElement('div');
+                fallback.className = 'w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm bg-red-600 text-white';
+                fallback.innerHTML = 'NF';
+                parent.insertBefore(fallback, target);
+              }
+            }}
+          />
           <h1 className={`text-xl font-bold transition-colors duration-300 ${
-            scrolled ? "text-[#1E40AF]" : "text-black"
+            scrolled ? "text-gray-100" : "text-gray-900"
           }`}>
-            Corredores NF
+            NF Corredores
           </h1>
         </div>
       </div>
@@ -93,12 +104,12 @@ export default function Header() {
             className={`
               text-sm font-medium transition-all duration-300 hover:scale-105 relative group py-2
               ${scrolled
-                ? "text-[#374151] hover:text-[#1E40AF]"
-                : "text-gray-800 hover:text-black"}
+                ? "text-gray-300 hover:text-red-400"
+                : "text-gray-700 hover:text-red-600"}
             `}
           >
             {link.name}
-            <span className={`absolute bottom-0 left-0 w-0 h-0.5 ${scrolled ? "bg-[#1E40AF]" : "bg-black"} transition-all duration-300 group-hover:w-full`} />
+            <span className={`absolute bottom-0 left-0 w-0 h-0.5 ${scrolled ? "bg-red-500" : "bg-red-600"} transition-all duration-300 group-hover:w-full`} />
           </Link>
         ))}
       </nav>
@@ -111,8 +122,8 @@ export default function Header() {
         }}
         className={`lg:hidden p-2 rounded-lg transition-all duration-300 ${
           scrolled
-            ? "text-[#374151] hover:bg-[#BFDBFE]/50"
-            : "text-gray-800 hover:bg-white/20"
+            ? "text-gray-300 hover:bg-gray-800/50"
+            : "text-gray-700 hover:bg-gray-100/50"
         }`}
         aria-label="Toggle mobile menu"
       >
@@ -131,8 +142,8 @@ export default function Header() {
           : "opacity-0 invisible transform -translate-y-2"
         }
         ${scrolled 
-          ? "bg-[#DBEAFE]/95 border-b border-[#BFDBFE]/50" 
-          : "bg-white/95 border-b border-white/20"
+          ? "bg-gray-900/95 border-b border-gray-700/50" 
+          : "bg-white/95 border-b border-gray-200/50"
         }
         backdrop-blur-md shadow-lg
       `}>
@@ -156,8 +167,8 @@ export default function Header() {
               className={`
                 block text-base font-medium transition-all duration-300 py-2 px-4 rounded-lg
                 ${scrolled
-                  ? "text-[#374151] hover:text-[#1E40AF] hover:bg-[#BFDBFE]/30"
-                  : "text-gray-800 hover:text-black hover:bg-white/30"
+                  ? "text-gray-300 hover:text-red-400 hover:bg-gray-800/30"
+                  : "text-gray-700 hover:text-red-600 hover:bg-gray-100/30"
                 }
               `}
             >

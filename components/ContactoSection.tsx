@@ -1,5 +1,5 @@
 "use client";
-import { Mail, Phone, MessageCircle, Clock, Send } from "lucide-react";
+import { Mail, Phone, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
 
 export default function ContactoSection() {
@@ -61,10 +61,10 @@ export default function ContactoSection() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-[#484060] mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
             Contacto
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-[#484060] to-[#615A77] mx-auto mb-8"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-red-600 to-red-700 mx-auto mb-8"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Estamos aquí para ayudarte. Contactanos y descubrí la tranquilidad de estar bien protegido
           </p>
@@ -73,55 +73,66 @@ export default function ContactoSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
           {/* Contact Information */}
           <div className="space-y-8">
-            <h3 className="text-3xl font-bold text-[#484060] mb-8">Información de Contacto</h3>
+            <h3 className="text-3xl font-bold text-gray-800 mb-8">Información de Contacto</h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#615A77] to-[#7C778D] rounded-lg mb-4 flex items-center justify-center">
+              <a 
+                href="tel:+56973765102"
+                className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer block md:cursor-default md:pointer-events-none"
+              >
+                <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-lg mb-4 flex items-center justify-center">
                   <Phone className="w-6 h-6 text-white" />
                 </div>
-                <h4 className="font-bold text-lg text-[#484060] mb-2">Teléfono</h4>
+                <h4 className="font-bold text-lg text-gray-800 mb-2">Teléfono</h4>
                 <p className="text-gray-600">+56 9 7376 5102</p>
-              </div>
+                <p className="text-xs text-red-600 mt-1 md:hidden">Toca para llamar</p>
+              </a>
 
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#7C778D] to-[#9D99A8] rounded-lg mb-4 flex items-center justify-center">
+              <a
+                href="https://wa.me/message/7KTGSWNW53BQM1?src=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer block group"
+              >
+                <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <MessageCircle className="w-6 h-6 text-white" />
                 </div>
-                <h4 className="font-bold text-lg text-[#484060] mb-2">WhatsApp</h4>
-                <p className="text-gray-600">+56 9 7376 5102</p>
-              </div>
+                <h4 className="font-bold text-lg text-gray-800 mb-3">WhatsApp</h4>
+                
+                <div className="bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-3 rounded-lg font-semibold text-center hover:from-red-700 hover:to-red-800 transition-all duration-300 transform group-hover:scale-105">
+                  Chatear Ahora
+                </div>
+              </a>
 
               <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#9D99A8] to-[#CBC9D0] rounded-lg mb-4 flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-lg mb-4 flex items-center justify-center">
                   <Mail className="w-6 h-6 text-white" />
                 </div>
-                <h4 className="font-bold text-lg text-[#484060] mb-2">Email</h4>
+                <h4 className="font-bold text-lg text-gray-800 mb-2">Email</h4>
                 <p className="text-gray-600">contacto@corredoresnf.cl</p>
               </div>
             </div>
 
-            {/* Hours */}
-            <div className="bg-gradient-to-br from-[#484060] to-[#615A77] rounded-2xl p-8 text-white">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                  <Clock className="w-6 h-6" />
+            {/* 24/7 Availability Stamp */}
+            <div className="relative flex justify-center">
+              <div className="relative w-48 h-48 bg-gradient-to-br from-red-600 to-red-700 rounded-full flex items-center justify-center shadow-2xl transform hover:scale-105 transition-all duration-300">
+                {/* Outer ring decoration */}
+                <div className="absolute inset-2 border-4 border-white/30 rounded-full"></div>
+                
+                {/* Inner content */}
+                <div className="text-center text-white relative z-10">
+                  <div className="text-5xl font-black mb-2 tracking-wider">24/7</div>
+                  <div className="text-sm font-semibold uppercase tracking-widest">Disponible</div>
+                  <div className="text-xs font-medium mt-1 opacity-90">Siempre a tu servicio</div>
                 </div>
-                <h4 className="text-2xl font-bold">Horarios de Atención</h4>
-              </div>
-              <div className="space-y-3 text-lg">
-                <div className="flex justify-between">
-                  <span>Lunes - Viernes:</span>
-                  <span className="font-semibold">9:00 - 18:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sábados:</span>
-                  <span className="font-semibold">9:00 - 13:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Domingos:</span>
-                  <span className="font-semibold">Cerrado</span>
+                
+                {/* Rotating arrows around the circle */}
+                <div className="absolute inset-0 animate-spin-slow">
+                  <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-b-6 border-transparent border-b-white/60"></div>
+                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 rotate-180 w-0 h-0 border-l-4 border-r-4 border-b-6 border-transparent border-b-white/60"></div>
+                  <div className="absolute left-2 top-1/2 transform -translate-y-1/2 -rotate-90 w-0 h-0 border-l-4 border-r-4 border-b-6 border-transparent border-b-white/60"></div>
+                  <div className="absolute right-2 top-1/2 transform -translate-y-1/2 rotate-90 w-0 h-0 border-l-4 border-r-4 border-b-6 border-transparent border-b-white/60"></div>
                 </div>
               </div>
             </div>
@@ -129,11 +140,11 @@ export default function ContactoSection() {
 
           {/* Contact Form */}
           <div className="bg-white rounded-2xl p-8 shadow-2xl border border-gray-100">
-            <h3 className="text-3xl font-bold text-[#484060] mb-8">Envianos un Mensaje</h3>
+            <h3 className="text-3xl font-bold text-gray-800 mb-8">Envianos un Mensaje</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-[#484060] mb-2">
+                  <label htmlFor="name" className="block text-sm font-semibold text-gray-800 mb-2">
                     Nombre Completo
                   </label>
                   <input
@@ -142,13 +153,13 @@ export default function ContactoSection() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#484060] focus:ring-2 focus:ring-[#484060]/20 transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors duration-300"
                     placeholder="Tu nombre"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-[#484060] mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-800 mb-2">
                     Email
                   </label>
                   <input
@@ -157,14 +168,14 @@ export default function ContactoSection() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#484060] focus:ring-2 focus:ring-[#484060]/20 transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors duration-300"
                     placeholder="tu@email.com"
                     required
                   />
                 </div>
               </div>
               <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-[#484060] mb-2">
+                <label htmlFor="phone" className="block text-sm font-semibold text-gray-800 mb-2">
                   Teléfono
                 </label>
                 <input
@@ -173,12 +184,12 @@ export default function ContactoSection() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#484060] focus:ring-2 focus:ring-[#484060]/20 transition-colors duration-300"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors duration-300"
                   placeholder="+56 9 1234 5678"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-[#484060] mb-2">
+                <label htmlFor="message" className="block text-sm font-semibold text-gray-800 mb-2">
                   Mensaje
                 </label>
                 <textarea
@@ -187,7 +198,7 @@ export default function ContactoSection() {
                   rows={6}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#484060] focus:ring-2 focus:ring-[#484060]/20 transition-colors duration-300 resize-none"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors duration-300 resize-none"
                   placeholder="Contanos en qué podemos ayudarte..."
                   required
                 ></textarea>
@@ -209,7 +220,7 @@ export default function ContactoSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-[#484060] to-[#615A77] text-white px-8 py-4 rounded-lg font-semibold hover:from-[#615A77] hover:to-[#7C778D] transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 transform shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-4 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 transform shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 {isSubmitting ? (
                   <>

@@ -109,7 +109,7 @@ export default function PreguntasSection() {
 
         {/* Contact CTA */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-br from-[#484060] to-[#615A77] rounded-2xl p-8 text-white shadow-2xl">
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 text-white shadow-2xl">
             <h3 className="text-2xl font-bold mb-4">¿Tienes más preguntas?</h3>
             <p className="text-lg mb-6 text-gray-200">
               Estamos listos para ayudarte con cualquier consulta adicional
@@ -117,7 +117,7 @@ export default function PreguntasSection() {
             <a
               href="#contacto"
               onClick={(e) => handleSmoothScroll(e, "contacto")}
-              className="bg-white text-[#484060] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 hover:scale-105 transform inline-block text-center"
+              className="bg-red-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300 hover:scale-105 transform inline-block text-center"
             >
               Contáctanos
             </a>

@@ -11,7 +11,7 @@ const CARDS = [
       "Cobertura adicional por enfermedades graves y accidentes.",
       "Planes flexibles con opciones de ahorro e inversión.",
     ],
-    color: "from-pink-400/20 to-rose-400/30"
+    color: "from-red-500/20 to-red-600/30"
   },
   {
     title: "Seguro de Salud",
@@ -21,7 +21,7 @@ const CARDS = [
       "Cobertura ambulatoria, hospitalaria y medicamentos.",
       "Planes familiares e individuales con copagos preferenciales.",
     ],
-    color: "from-blue-400/20 to-cyan-400/30"
+    color: "from-emerald-500/20 to-emerald-600/30"
   },
   {
     title: "Seguro de Hogar",
@@ -31,7 +31,7 @@ const CARDS = [
       "Cobertura de responsabilidad civil familiar.",
       "Servicios de emergencia 24/7 y reparaciones a domicilio.",
     ],
-    color: "from-green-400/20 to-emerald-400/30"
+    color: "from-amber-500/20 to-amber-600/30"
   },
   {
     title: "Seguro de Auto",
@@ -41,7 +41,7 @@ const CARDS = [
       "Asistencia en viaje 24/7 en todo el territorio nacional.",
       "Vehículo de reemplazo y gestión integral de siniestros.",
     ],
-    color: "from-orange-400/20 to-amber-400/30"
+    color: "from-slate-500/20 to-slate-600/30"
   },
   {
     title: "Seguro de Viaje",
@@ -51,7 +51,7 @@ const CARDS = [
       "Cobertura médica de emergencia y repatriación sanitaria.",
       "Compensación por cancelación de viaje y pérdida de equipaje.",
     ],
-    color: "from-purple-400/20 to-violet-400/30"
+    color: "from-orange-500/20 to-orange-600/30"
   },
   {
     title: "Seguro de Accidentes Personales",
@@ -61,7 +61,7 @@ const CARDS = [
       "Cobertura de gastos médicos y hospitalarios.",
       "Extensión familiar con tarifas preferenciales.",
     ],
-    color: "from-teal-400/20 to-cyan-400/30"
+    color: "from-gray-500/20 to-gray-600/30"
   },
 ];
 
@@ -69,7 +69,6 @@ export default function PersonasSection() {
   const [selectedCard, setSelectedCard] = useState(0);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -89,29 +88,6 @@ export default function PersonasSection() {
     return () => observer.disconnect();
   }, []);
 
-  // Check if we're on mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024); // lg breakpoint
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Auto-advance cards only on desktop
-  useEffect(() => {
-    if (!isMobile) {
-      const interval = setInterval(() => {
-        setSelectedCard((prev) => (prev + 1) % CARDS.length);
-      }, 5000);
-
-      return () => clearInterval(interval);
-    }
-  }, [isMobile]);
-
   return (
     <section
       id="personas"
@@ -123,12 +99,12 @@ export default function PersonasSection() {
           {/* Left Side - Text Content */}
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <div className="mb-8">
-              <div className="inline-block px-4 py-2 bg-blue-100/80 text-blue-700 rounded-full text-sm font-medium mb-4">
+              <div className="inline-block px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-2xl text-lg font-bold mb-6 shadow-lg transform hover:scale-105 transition-all duration-300">
                 PERSONAS
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
                 Seguros que se adaptan a 
-                <span className="text-blue-600"> tu vida</span>
+                <span className="text-red-600"> tu vida</span>
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed mb-8">
                 Protección integral para vos y tu familia en cada etapa de la vida, 
@@ -149,21 +125,21 @@ export default function PersonasSection() {
                     }}
                     className={`w-full text-left p-4 rounded-2xl border-2 transition-all duration-300 hover:scale-[1.02] ${
                       selectedCard === index
-                        ? 'border-blue-200 bg-blue-50/80 shadow-md'
-                        : 'border-gray-100 bg-white/50 hover:border-blue-100 hover:bg-blue-25'
+                        ? 'border-red-200 bg-red-50/80 shadow-md'
+                        : 'border-gray-100 bg-white/50 hover:border-red-100 hover:bg-red-25'
                     }`}
                   >
                     <div className="flex items-center gap-4">
                       <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                         selectedCard === index 
-                          ? 'bg-blue-500 text-white' 
+                          ? 'bg-red-600 text-white' 
                           : 'bg-gray-100 text-gray-600'
                       }`}>
                         {card.icon}
                       </div>
                       <div className="flex-1">
                         <h3 className={`text-lg font-semibold ${
-                          selectedCard === index ? 'text-blue-700' : 'text-gray-700'
+                          selectedCard === index ? 'text-red-700' : 'text-gray-700'
                         }`}>
                           {card.title}
                         </h3>
@@ -191,7 +167,7 @@ export default function PersonasSection() {
                         {card.description.map((paragraph, paragraphIndex) => (
                           <div key={paragraphIndex} className="flex items-start gap-3">
                             <div className="w-5 h-5 rounded-full bg-white/60 flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                              <div className="w-2 h-2 rounded-full bg-red-600"></div>
                             </div>
                             <p className="text-gray-700 text-sm leading-relaxed">{paragraph}</p>
                           </div>
@@ -232,7 +208,7 @@ export default function PersonasSection() {
                   {CARDS[selectedCard].description.map((paragraph, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <div className="w-6 h-6 rounded-full bg-white/60 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                        <div className="w-2 h-2 rounded-full bg-red-600"></div>
                       </div>
                       <p className="text-gray-700 leading-relaxed">{paragraph}</p>
                     </div>
@@ -254,7 +230,7 @@ export default function PersonasSection() {
                     onClick={() => setSelectedCard(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       selectedCard === index 
-                        ? 'bg-blue-600 scale-125' 
+                        ? 'bg-red-600 scale-125' 
                         : 'bg-gray-300 hover:bg-gray-400'
                     }`}
                   />

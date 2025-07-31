@@ -27,9 +27,13 @@ export default function InicioSection() {
           {/* Background Placeholder - Only visible on single column layout */}
           <div className="absolute inset-0 flex items-center justify-center lg:hidden">
             <img 
-              src="/400x400.svg" 
-              alt="Background" 
+              src="/logo.png" 
+              alt="NF Corredores Logo" 
               className="w-96 h-96 object-contain opacity-20 select-none pointer-events-none"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = "/400x400.svg";
+              }}
             />
           </div>
 
@@ -37,10 +41,10 @@ export default function InicioSection() {
           <div className={`transition-all duration-1000 relative z-10 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight">
               Seguros que crean 
-              <span className="block text-blue-600">tranquilidad.</span>
+              <span className="block text-red-600">tranquilidad.</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Solo Corredores NF te da una póliza de seguro de vida que no tiene costo adicional y crea valor para tu futuro.
+              Solo NF Corredores te da una póliza de seguro de vida que no tiene costo adicional y crea valor para tu futuro.
             </p>
 
             {/* CTA Buttons */}
@@ -48,7 +52,7 @@ export default function InicioSection() {
               <a
                 href="#nosotros"
                 onClick={(e) => handleSmoothScroll(e, "nosotros")}
-                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 flex items-center justify-center gap-2 text-lg hover:scale-105 transform shadow-lg"
+                className="bg-red-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 flex items-center justify-center gap-2 text-lg hover:scale-105 transform shadow-lg"
               >
                 <ArrowRight size={20} />
                 Comenzar
@@ -63,13 +67,17 @@ export default function InicioSection() {
             </div>
           </div>
 
-          {/* Right Side - Placeholder (Only visible on large screens) */}
+          {/* Right Side - Logo (Only visible on large screens) */}
           <div className={`transition-all duration-1000 delay-300 hidden lg:block ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
             <div className="flex justify-center">
               <img 
-                src="/400x400.svg" 
-                alt="Placeholder" 
-                className="w-80 h-80 object-contain opacity-50"
+                src="/logo.png" 
+                alt="NF Corredores Logo" 
+                className="w-100 h-100 object-contain opacity-100"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "/400x400.svg";
+                }}
               />
             </div>
           </div>

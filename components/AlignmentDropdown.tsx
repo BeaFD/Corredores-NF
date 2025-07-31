@@ -66,7 +66,7 @@ export default function AlignmentDropdown({ editor }: AlignmentDropdownProps) {
               <button
                 key={option.value}
                 onClick={() => handleAlignmentChange(option.value)}
-                className={`w-full flex items-center px-4 py-2 text-sm text-left transition-colors duration-150 ${editor.isActive({ textAlign: option.value }) ? 'bg-blue-600 text-white' : 'text-white hover:bg-gray-600'}`}
+                className={`w-full flex items-center px-4 py-2 text-sm text-left transition-colors duration-150 ${editor.isActive({ textAlign: option.value }) ? 'bg-red-600 text-white' : 'text-white hover:bg-gray-600'}`}
               >
                 <Icon size={18} className="mr-3" /> {/* Increased margin */}
                 {option.label}

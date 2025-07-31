@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: 'contacto@corredoresnf.cl', // Recipient email
-      subject: 'Nueva consulta desde sitio web - Corredores NF',
+      subject: 'Nueva consulta desde sitio web - NF Corredores',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #484060; border-bottom: 2px solid #615A77; padding-bottom: 10px;">
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
         </div>
       `,
       text: `
-        Nueva consulta desde el sitio web - Corredores NF
+        Nueva consulta desde el sitio web - NF Corredores
         
         Nombre: ${name}
         Email: ${email}

@@ -11,7 +11,7 @@ const CARDS = [
       "Cobertura de daños materiales, personales y perjuicios económicos.",
       "Asesoramiento especializado en gestión de riesgos empresariales.",
     ],
-    color: "from-emerald-400/20 to-teal-400/30"
+    color: "from-red-600/20 to-red-700/30"
   },
   {
     title: "Seguro de Patrimonio",
@@ -21,7 +21,7 @@ const CARDS = [
       "Cobertura de maquinaria, equipos, mobiliario y mercaderías.",
       "Valuación profesional y actualización automática de sumas aseguradas.",
     ],
-    color: "from-blue-400/20 to-indigo-400/30"
+    color: "from-teal-600/20 to-teal-700/30"
   },
   {
     title: "Seguro de Vida Laboral",
@@ -31,7 +31,7 @@ const CARDS = [
       "Indemnizaciones por invalidez permanente y gastos médicos.",
       "Programas flexibles adaptados al tamaño de tu empresa.",
     ],
-    color: "from-rose-400/20 to-pink-400/30"
+    color: "from-amber-600/20 to-amber-700/30"
   },
   {
     title: "Seguro de Flota de Vehículos",
@@ -41,7 +41,7 @@ const CARDS = [
       "Gestión centralizada de pólizas y siniestros de toda tu flota.",
       "Descuentos especiales por volumen y buen historial de manejo.",
     ],
-    color: "from-orange-400/20 to-amber-400/30"
+    color: "from-slate-600/20 to-slate-700/30"
   },
   {
     title: "Seguro de Riesgos del Trabajo",
@@ -51,7 +51,7 @@ const CARDS = [
       "Cobertura médica y rehabilitación por accidentes laborales.",
       "Programas de prevención y capacitación en seguridad laboral.",
     ],
-    color: "from-purple-400/20 to-violet-400/30"
+    color: "from-orange-600/20 to-orange-700/30"
   },
   {
     title: "Seguro de Industria",
@@ -61,7 +61,7 @@ const CARDS = [
       "Cobertura de interrupción de negocio y pérdida de beneficios.",
       "Evaluación especializada de riesgos industriales complejos.",
     ],
-    color: "from-cyan-400/20 to-teal-400/30"
+    color: "from-gray-600/20 to-gray-700/30"
   },
 ];
 
@@ -69,7 +69,6 @@ export default function EmpresasSection() {
   const [selectedCard, setSelectedCard] = useState(0);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -89,29 +88,6 @@ export default function EmpresasSection() {
     return () => observer.disconnect();
   }, []);
 
-  // Check if we're on mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024); // lg breakpoint
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // Auto-advance cards only on desktop
-  useEffect(() => {
-    if (!isMobile) {
-      const interval = setInterval(() => {
-        setSelectedCard((prev) => (prev + 1) % CARDS.length);
-      }, 6000);
-
-      return () => clearInterval(interval);
-    }
-  }, [isMobile]);
-
   return (
     <section
       id="empresas"
@@ -123,12 +99,12 @@ export default function EmpresasSection() {
           {/* Left Side - Text Content */}
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <div className="mb-8">
-              <div className="inline-block px-4 py-2 bg-emerald-100/80 text-emerald-700 rounded-full text-sm font-medium mb-4">
+              <div className="inline-block px-6 py-3 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-2xl text-lg font-bold mb-6 shadow-lg transform hover:scale-105 transition-all duration-300">
                 EMPRESAS
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
                 Protección integral para 
-                <span className="text-emerald-600"> tu negocio</span>
+                <span className="text-red-600"> tu negocio</span>
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed mb-8">
                 Soluciones de seguros empresariales diseñadas para cubrir todos los riesgos 
@@ -149,21 +125,21 @@ export default function EmpresasSection() {
                     }}
                     className={`w-full text-left p-4 rounded-2xl border-2 transition-all duration-300 hover:scale-[1.02] ${
                       selectedCard === index
-                        ? 'border-emerald-200 bg-emerald-50/80 shadow-md'
-                        : 'border-gray-100 bg-white/50 hover:border-emerald-100 hover:bg-emerald-25'
+                        ? 'border-red-200 bg-red-50/80 shadow-md'
+                        : 'border-gray-100 bg-white/50 hover:border-red-100 hover:bg-red-25'
                     }`}
                   >
                     <div className="flex items-center gap-4">
                       <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                         selectedCard === index 
-                          ? 'bg-emerald-500 text-white' 
+                          ? 'bg-red-600 text-white' 
                           : 'bg-gray-100 text-gray-600'
                       }`}>
                         {card.icon}
                       </div>
                       <div className="flex-1">
                         <h3 className={`text-lg font-semibold ${
-                          selectedCard === index ? 'text-emerald-700' : 'text-gray-700'
+                          selectedCard === index ? 'text-red-700' : 'text-gray-700'
                         }`}>
                           {card.title}
                         </h3>
@@ -191,7 +167,7 @@ export default function EmpresasSection() {
                         {card.description.map((paragraph, paragraphIndex) => (
                           <div key={paragraphIndex} className="flex items-start gap-3">
                             <div className="w-5 h-5 rounded-full bg-white/60 flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <div className="w-2 h-2 rounded-full bg-emerald-600"></div>
+                              <div className="w-2 h-2 rounded-full bg-red-600"></div>
                             </div>
                             <p className="text-gray-700 text-sm leading-relaxed">{paragraph}</p>
                           </div>
@@ -232,7 +208,7 @@ export default function EmpresasSection() {
                   {CARDS[selectedCard].description.map((paragraph, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <div className="w-6 h-6 rounded-full bg-white/60 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <div className="w-2 h-2 rounded-full bg-emerald-600"></div>
+                        <div className="w-2 h-2 rounded-full bg-red-600"></div>
                       </div>
                       <p className="text-gray-700 leading-relaxed">{paragraph}</p>
                     </div>
@@ -254,7 +230,7 @@ export default function EmpresasSection() {
                     onClick={() => setSelectedCard(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       selectedCard === index 
-                        ? 'bg-emerald-600 scale-125' 
+                        ? 'bg-red-600 scale-125' 
                         : 'bg-gray-300 hover:bg-gray-400'
                     }`}
                   />
