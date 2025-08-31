@@ -100,15 +100,19 @@ export default function PersonasSection() {
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <div className="mb-8">
               <div className="inline-block px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-2xl text-lg font-bold mb-6 shadow-lg transform hover:scale-105 transition-all duration-300">
-                PERSONAS
+                SEGUROS PERSONALES
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
-                Seguros que se adaptan a 
-                <span className="text-red-600"> tu vida</span>
+                Seguros Personales en Concepción
+                <span className="text-red-600"> para tu tranquilidad</span>
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                Protección integral para vos y tu familia en cada etapa de la vida, 
-                con coberturas flexibles y el mejor servicio.
+              <p className="text-xl text-gray-600 leading-relaxed mb-6">
+                <strong>Seguros personales</strong> diseñados para proteger a tu familia en <strong>Concepción</strong>. 
+                Ofrecemos <strong>seguros de vida</strong>, <strong>seguros automotrices</strong>, seguros de salud y más.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                Como <strong>corredores de seguros especializados</strong>, te asesoramos para encontrar 
+                el <strong>seguro personal</strong> que mejor se adapte a tus necesidades en <strong>Concepción</strong>.
               </p>
             </div>
 

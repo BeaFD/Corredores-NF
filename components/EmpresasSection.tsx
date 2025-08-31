@@ -100,15 +100,19 @@ export default function EmpresasSection() {
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <div className="mb-8">
               <div className="inline-block px-6 py-3 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-2xl text-lg font-bold mb-6 shadow-lg transform hover:scale-105 transition-all duration-300">
-                EMPRESAS
+                SEGUROS EMPRESARIALES
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
-                Protección integral para 
-                <span className="text-red-600"> tu negocio</span>
+                Seguros para Empresas en Concepción
+                <span className="text-red-600"> protege tu negocio</span>
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                Soluciones de seguros empresariales diseñadas para cubrir todos los riesgos 
-                de tu actividad comercial e industrial.
+              <p className="text-xl text-gray-600 leading-relaxed mb-6">
+                <strong>Seguros para empresas</strong> especializados en <strong>Concepción</strong>. 
+                Protegemos tu patrimonio empresarial con <strong>seguros de responsabilidad civil</strong> y más.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                Como <strong>corredora de seguros empresariales</strong>, ofrecemos soluciones integrales 
+                para proteger tu actividad comercial e industrial en <strong>Concepción</strong>.
               </p>
             </div>
 

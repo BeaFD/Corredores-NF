@@ -43,9 +43,21 @@ export default function InicioSection() {
               Seguros que crean 
               <span className="block text-red-600">tranquilidad.</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Solo NF Corredores te da una póliza de seguro de vida que no tiene costo adicional y crea valor para tu futuro.
+            <p className="text-xl text-gray-600 mb-6 leading-relaxed">
+              <strong>NF Corredores</strong>, tu <strong>corredora de seguros</strong> de confianza en <strong>Concepción</strong>. 
+              Especialistas en <strong>seguros personales</strong>, <strong>seguros automotrices</strong> y <strong>seguros para empresas</strong>.
             </p>
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              Protege lo que más valoras con nuestros <strong>seguros en Concepción</strong>. 
+              Somos <strong>corredores de seguros</strong> especializados en brindar la mejor cobertura para personas y empresas.
+            </p>
+
+            {/* Keywords for SEO - Hidden but indexable */}
+            <div className="sr-only">
+              Seguros Concepción, Corredora de seguros Concepción, Seguros personales Concepción, 
+              Seguros para empresas Concepción, Seguros automotrices Concepción, NF Corredores, 
+              Corredores NF, Corredora NF, Seguros de vida Concepción, Seguros de hogar Concepción
+            </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
