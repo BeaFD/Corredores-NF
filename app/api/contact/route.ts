@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     // Email content
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: 'contacto@cfigueroa.com, nfernandez@corredoresnf.com', // Multiple recipients
+      to: 'cfigueroa@nfcorredores.com, nfernandez@nfcorredores.com', // Multiple recipients
       subject: `${name} - ${subject || 'Nueva consulta desde sitio web - NF Corredores'}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
