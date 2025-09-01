@@ -91,11 +91,11 @@ export default function EmpresasConfianzaSection() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
           <div className="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-5">
               {INSURANCE_COMPANIES.map((company, index) => (
                 <div
                   key={index}
-                  className="group relative border-r border-b border-gray-200 last:border-r-0 xl:nth-child(5n):border-r-0 lg:nth-child(4n):border-r-0 sm:nth-child(3n):border-r-0 nth-child(2n):border-r-0"
+                  className="group relative border-r border-b border-gray-200 last:border-r-0 md:nth-child(5n):border-r-0 lg:nth-child(5n):border-r-0 xl:nth-child(5n):border-r-0 nth-child(2n):border-r-0"
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
@@ -203,20 +203,10 @@ export default function EmpresasConfianzaSection() {
         }
         
         /* Grid border selectors for desktop */
-        .xl\\:nth-child\\(5n\\)\\:border-r-0:nth-child(5n) {
+        .md\\:nth-child\\(5n\\)\\:border-r-0:nth-child(5n) {
           border-right: none;
         }
-        @media (max-width: 1279px) {
-          .lg\\:nth-child\\(4n\\)\\:border-r-0:nth-child(4n) {
-            border-right: none;
-          }
-        }
-        @media (max-width: 1023px) {
-          .sm\\:nth-child\\(3n\\)\\:border-r-0:nth-child(3n) {
-            border-right: none;
-          }
-        }
-        @media (max-width: 639px) {
+        @media (max-width: 767px) {
           .nth-child\\(2n\\)\\:border-r-0:nth-child(2n) {
             border-right: none;
           }
