@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, phone, message } = await request.json();
+    const { name, email, phone, message, subject } = await request.json();
 
     // Validate required environment variables
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
@@ -31,8 +31,8 @@ export async function POST(request: NextRequest) {
     // Email content
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: 'contacto@cfigueroa.com, nfernandez@corredoresnf.com, jajirodriguez18@gmail.com', // Multiple recipients
-      subject: 'Nueva consulta desde sitio web - NF Corredores',
+      to: 'contacto@cfigueroa.com, nfernandez@corredoresnf.com', // Multiple recipients
+      subject: `${name} - ${subject || 'Nueva consulta desde sitio web - NF Corredores'}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #484060; border-bottom: 2px solid #615A77; padding-bottom: 10px;">
