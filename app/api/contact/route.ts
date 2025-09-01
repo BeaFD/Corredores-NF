@@ -5,19 +5,33 @@ export async function POST(request: NextRequest) {
   try {
     const { name, email, phone, message } = await request.json();
 
-    // Create a transporter using Gmail (you can change this to other providers)
+    // Validate required environment variables
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('Missing EMAIL_USER or EMAIL_PASS environment variables');
+      return NextResponse.json(
+        { error: 'Configuración de email incompleta' },
+        { status: 500 }
+      );
+    }
+
+    // Create a transporter using Gmail with better configuration
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false, // true for 465, false for other ports
       auth: {
         user: process.env.EMAIL_USER, // Your email
-        pass: process.env.EMAIL_PASS, // Your app password
+        pass: process.env.EMAIL_PASS, // Your app password (not regular password)
       },
+      tls: {
+        rejectUnauthorized: false
+      }
     });
 
     // Email content
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: 'contacto@corredoresnf.cl', // Recipient email
+      to: 'contacto@cfigueroa.com, nfernandez@corredoresnf.com, jajirodriguez18@gmail.com', // Multiple recipients
       subject: 'Nueva consulta desde sitio web - NF Corredores',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -39,7 +53,7 @@ export async function POST(request: NextRequest) {
           </div>
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #666;">
-            <p>Este mensaje fue enviado desde el formulario de contacto de corredoresnf.cl</p>
+            <p>Este mensaje fue enviado desde el formulario de contacto de nfcorredores.cl</p>
           </div>
         </div>
       `,
@@ -53,7 +67,7 @@ export async function POST(request: NextRequest) {
         Mensaje:
         ${message}
         
-        Este mensaje fue enviado desde el formulario de contacto de corredoresnf.cl
+        Este mensaje fue enviado desde el formulario de contacto de nfcorredores.cl
       `,
     };
 

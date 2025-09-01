@@ -3,6 +3,7 @@ import InicioSection from "../components/InicioSection";
 import NosotrosSection from "../components/NosotrosSection";
 import PersonasSection from "../components/PersonasSection";
 import EmpresasSection from "../components/EmpresasSection";
+import EmpresasConfianzaSection from "../components/EmpresasConfianzaSection";
 import PreguntasSection from "../components/PreguntasSection";
 import ContactoSection from "../components/ContactoSection";
 import ScrollEffects from "../components/ScrollEffects";
@@ -100,6 +101,7 @@ export default function Home() {
       <main className="relative z-10">
         <InicioSection />
         <NosotrosSection />
+        <EmpresasConfianzaSection />
         <PersonasSection />
         <EmpresasSection />
         <PreguntasSection />

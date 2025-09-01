@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   title: "NF Corredores | Corredora de Seguros en Concepción | Seguros Personales y Empresariales",
   description: "NF Corredores - Corredora de seguros líder en Concepción. Ofrecemos seguros personales, automotrices, para empresas y más. Protege lo que más valoras con nuestros seguros en Concepción.",
   keywords: "seguros, corredora de seguros, seguros Concepción, seguros personales, seguros empresariales, seguros automotrices, NF Corredores, corredores de seguros Concepción, seguros para empresas, seguros en Concepción",
-  authors: [{ name: "NF Corredores" }],
-  creator: "NF Corredores",
-  publisher: "NF Corredores",
+  authors: [{ name: "Beatriz Rodríguez" }],
+  creator: "Beatriz Rodríguez",
+  publisher: "SpringBlooming",
   category: "Insurance",
   classification: "Business",
   icons: {
@@ -55,9 +55,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  verification: {
-    google: "your-google-verification-code-here",
   },
 };
 

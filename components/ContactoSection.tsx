@@ -1,17 +1,19 @@
 "use client";
 import { Mail, Phone, MessageCircle, Send } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ContactoSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
+    subject: 'Sitio web - Contacto',
     message: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [showSubjectField, setShowSubjectField] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,8 +36,10 @@ export default function ContactoSection() {
           name: '',
           email: '',
           phone: '',
+          subject: 'Sitio web - Contacto',
           message: ''
         });
+        setShowSubjectField(false);
       } else {
         setSubmitStatus('error');
       }
@@ -53,6 +57,23 @@ export default function ContactoSection() {
       [e.target.name]: e.target.value
     });
   };
+
+  // Function to set subject programmatically (called from other components)
+  const setSubject = (subject: string) => {
+    setFormData(prev => ({
+      ...prev,
+      subject: subject
+    }));
+    setShowSubjectField(true); // Show the field when subject is set from comparison view
+  };
+
+  // Expose setSubject function globally for other components to use
+  useEffect(() => {
+    (window as typeof window & { setContactSubject?: (subject: string) => void }).setContactSubject = setSubject;
+    return () => {
+      delete (window as typeof window & { setContactSubject?: (subject: string) => void }).setContactSubject;
+    };
+  }, []);
 
   return (
     <section
@@ -153,7 +174,7 @@ export default function ContactoSection() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors duration-300 placeholder-gray-500 text-gray-900"
                     placeholder="Tu nombre"
                     required
                   />
@@ -168,7 +189,7 @@ export default function ContactoSection() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors duration-300 placeholder-gray-500 text-gray-900"
                     placeholder="tu@email.com"
                     required
                   />
@@ -184,10 +205,29 @@ export default function ContactoSection() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors duration-300"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors duration-300 placeholder-gray-500 text-gray-900"
                   placeholder="+56 9 1234 5678"
                 />
               </div>
+              {showSubjectField && (
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-semibold text-gray-800 mb-2">
+                    Asunto
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors duration-300 bg-gray-50 text-gray-900 ${
+                      formData.subject ? '' : 'placeholder-gray-500'
+                    }`}
+                    placeholder="Asunto del mensaje"
+                    readOnly={!!formData.subject}
+                  />
+                </div>
+              )}
               <div>
                 <label htmlFor="message" className="block text-sm font-semibold text-gray-800 mb-2">
                   Mensaje
@@ -198,7 +238,7 @@ export default function ContactoSection() {
                   rows={6}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors duration-300 resize-none"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors duration-300 resize-none placeholder-gray-500 text-gray-900"
                   placeholder="Contanos en qué podemos ayudarte..."
                   required
                 ></textarea>

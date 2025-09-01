@@ -59,10 +59,64 @@ export default function NosotrosSection() {
                 buscando siempre <strong className="text-red-600">estrechar y prolongar en el tiempo</strong> los lazos con nuestros clientes, 
                 convirtiéndonos en su socio estratégico de confianza.
               </p>
-              <div className="flex items-center gap-4 pt-6">
-                <div className="flex items-center gap-2 text-red-600">
-                  <Award size={24} />
-                  <span className="font-semibold">Certificados y Acreditados</span>
+              <div className="pt-6">
+                <div className="bg-gradient-to-r from-red-50 to-red-100/80 rounded-2xl p-6 border border-red-200/30">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center">
+                      <Award size={20} className="text-white" />
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-800">Certificaciones y Acreditaciones</h3>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-800">Corredora Autorizada CMF</p>
+                        <p className="text-xs text-gray-600">Comisión para el Mercado Financiero</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-800">Registro de Corredores</p>
+                        <p className="text-xs text-gray-600">Superintendencia de Valores y Seguros</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-800">Certificación ISO 9001</p>
+                        <p className="text-xs text-gray-600">Gestión de Calidad en Servicios</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-800">Miembro ANS Chile</p>
+                        <p className="text-xs text-gray-600">Asociación Nacional de Corredores de Seguros</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

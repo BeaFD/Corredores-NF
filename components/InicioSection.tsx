@@ -1,9 +1,11 @@
 "use client";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import ChoiceSection from "./ChoiceSection";
 
 export default function InicioSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const [showChoice, setShowChoice] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -15,6 +17,27 @@ export default function InicioSection() {
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleComenzarClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setShowChoice(true);
+  };
+
+  const handleChoice = (choice: 'persona' | 'empresa') => {
+    setShowChoice(false);
+    // Small delay to allow the modal to close before scrolling
+    setTimeout(() => {
+      const targetId = choice === 'persona' ? 'personas' : 'empresas';
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 200);
+  };
+
+  const handleCloseChoice = () => {
+    setShowChoice(false);
   };
 
   return (
@@ -44,12 +67,7 @@ export default function InicioSection() {
               <span className="block text-red-600">tranquilidad.</span>
             </h1>
             <p className="text-xl text-gray-600 mb-6 leading-relaxed">
-              <strong>NF Corredores</strong>, tu <strong>corredora de seguros</strong> de confianza en <strong>Concepción</strong>. 
-              Especialistas en <strong>seguros personales</strong>, <strong>seguros automotrices</strong> y <strong>seguros para empresas</strong>.
-            </p>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Protege lo que más valoras con nuestros <strong>seguros en Concepción</strong>. 
-              Somos <strong>corredores de seguros</strong> especializados en brindar la mejor cobertura para personas y empresas.
+              Solo NF Corredores te da una póliza de seguro de vida que no tiene costo adicional y crea valor para tu futuro.
             </p>
 
             {/* Keywords for SEO - Hidden but indexable */}
@@ -62,9 +80,9 @@ export default function InicioSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <a
-                href="#nosotros"
-                onClick={(e) => handleSmoothScroll(e, "nosotros")}
-                className="bg-red-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 flex items-center justify-center gap-2 text-lg hover:scale-105 transform shadow-lg"
+                href="#"
+                onClick={handleComenzarClick}
+                className="bg-red-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 flex items-center justify-center gap-2 text-lg hover:scale-105 transform shadow-lg cursor-pointer"
               >
                 <ArrowRight size={20} />
                 Comenzar
@@ -95,6 +113,13 @@ export default function InicioSection() {
           </div>
         </div>
       </div>
+
+      {/* Choice Section Modal */}
+      <ChoiceSection 
+        isVisible={showChoice}
+        onChoice={handleChoice}
+        onClose={handleCloseChoice}
+      />
     </section>
   );
 }
