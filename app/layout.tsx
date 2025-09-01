@@ -11,7 +11,7 @@ const questrial = Questrial({
 
 export const metadata: Metadata = {
   title: "NF Corredores",
-  description: "NF Corredores - Corredora de seguros líder en Concepción. Ofrecemos seguros personales, automotrices, para empresas y más. Protege lo que más valoras con nuestros seguros en Concepción.",
+  description: "NF Corredores - Corredora de seguros. Ofrecemos seguros personales, automotrices, para empresas y más. Protege lo que más valoras con nuestros seguros en Concepción.",
   keywords: "seguros, corredora de seguros, seguros Concepción, seguros personales, seguros empresariales, seguros automotrices, NF Corredores, corredores de seguros Concepción, seguros para empresas, seguros en Concepción",
   authors: [{ name: "Beatriz Rodríguez" }],
   creator: "Beatriz Rodríguez",
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
     apple: "/logo.png",
   },
   openGraph: {
-    title: "NF Corredores | Corredora de Seguros en Concepción",
-    description: "Corredora de seguros líder en Concepción. Seguros personales, automotrices y empresariales. Protege lo que más valoras.",
+    title: "NF Corredores | Corredora de Seguros",
+    description: "Seguros personales, automotrices y empresariales. Protege lo que más valoras.",
     url: "https://www.nfcorredores.cl",
     siteName: "NF Corredores",
     locale: "es_CL",
@@ -35,14 +35,14 @@ export const metadata: Metadata = {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "NF Corredores - Corredora de Seguros Concepción",
+        alt: "NF Corredores - Corredora de Seguros",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NF Corredores | Corredora de Seguros en Concepción",
-    description: "Corredora de seguros líder en Concepción. Seguros personales, automotrices y empresariales.",
+    title: "NF Corredores | Corredora de Seguros",
+    description: "Seguros personales, automotrices y empresariales.",
     images: ["/logo.png"],
   },
   robots: {
