@@ -10,7 +10,7 @@ const questrial = Questrial({
 });
 
 export const metadata: Metadata = {
-  title: "NF Corredores | Corredora de Seguros en Concepción | Seguros Personales y Empresariales",
+  title: "NF Corredores",
   description: "NF Corredores - Corredora de seguros líder en Concepción. Ofrecemos seguros personales, automotrices, para empresas y más. Protege lo que más valoras con nuestros seguros en Concepción.",
   keywords: "seguros, corredora de seguros, seguros Concepción, seguros personales, seguros empresariales, seguros automotrices, NF Corredores, corredores de seguros Concepción, seguros para empresas, seguros en Concepción",
   authors: [{ name: "Beatriz Rodríguez" }],
